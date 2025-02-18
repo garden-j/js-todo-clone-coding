@@ -1,6 +1,8 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
+//const toDos = document.querySelector("#todo-form");
+//const todoList = document.querySelector("#todo-list");
 
 const HIDDEN_CLASSNAME = "hidden"; //string만 포함된 변수는 대문자로 표기
 const USERNAME_KEY = "username"; // 반복되면 무조건 변수로 지정
@@ -15,8 +17,10 @@ function onLoginSumbmit(event) {
 }
 
 function paintGreetings(username) {
-  greeting.innerText = `Hello ${username}`; // 문자열 합쳐 쓸 때 이렇게 쓸 수도 있음
+  greeting.innerText = `Hello, ${username}`; // 문자열 합쳐 쓸 때 이렇게 쓸 수도 있음
   greeting.classList.remove(HIDDEN_CLASSNAME); // hidden 없애기
+  //toDos.classList.remove(HIDDEN_CLASSNAME);
+  //todoList.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
@@ -27,6 +31,7 @@ if (savedUsername === null) {
   loginForm.addEventListener("submit", onLoginSumbmit); // addEventListener 안의 함수는 직접 실행하지 않는다. "submit"되면 브라우저가 해준다. + 브라우저는 event에 대한 정보도 줌.
 } else {
   // show the greetings
+  loginForm.classList.add(HIDDEN_CLASSNAME);
   paintGreetings(savedUsername);
 }
 

@@ -9,8 +9,10 @@ function onGeoOk(position) {
     .then((data) => {
       const weather = document.querySelector("#weather span:first-child");
       const city = document.querySelector("#weather span:last-child");
+      const temp = document.querySelector("#weather span:nth-child(2)");
+      weather.innerText = `${data.weather[0].main}, `;
+      temp.innerText = `${data.main.temp}, `;
       city.innerText = data.name;
-      weather.innerText = data.weather[0].main;
     }); // fetch를 이용해 실제로 url에 갈 필요 없이 javascript가 대신 url을 부름
 }
 
